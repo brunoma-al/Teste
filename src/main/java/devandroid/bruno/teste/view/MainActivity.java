@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     Controller controller;
     Classe objeto;
-    String dadosObjeto;
-
     EditText editNome;
     EditText editCandidatura;
 
@@ -58,10 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 objeto.setPrimeiroNome(editNome.getText().toString());
                 objeto.setMotivoCandidatura(editCandidatura.getText().toString());
 
-                controller.salvar(objeto);
-
-                Toast.makeText(MainActivity.this, "Enviado, obrigado!"+objeto.toString(), Toast.LENGTH_SHORT).show();
-                finish();
+                Toast.makeText(MainActivity.this, "Enviado!"+objeto.toString(), Toast.LENGTH_SHORT).show();
+                controller.enviar(objeto);
             }
         });
 

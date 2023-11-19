@@ -15,7 +15,7 @@ public class Controller {
         return super.toString();
     }
 
-    public void salvar(Classe objeto) {
+    public void enviar(Classe objeto) {
         Log.d("Controller-MVC", "Enviado!"+objeto.toString());
     }
 }
