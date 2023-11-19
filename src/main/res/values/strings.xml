@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Teste</string>
+    <string name="candidatos_SF"><![CDATA[Candidatos S&F]]></string>
+    <string name="nome">Nome:</string>
+    <string name="motivo_da_candidatura">Motivo da candidatura</string>
+    <string name="limpar">LIMPAR</string>
+    <string name="enviar">ENVIAR</string>
+</resources>
