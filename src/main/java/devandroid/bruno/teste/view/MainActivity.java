@@ -35,18 +35,23 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor teste = preferences.edit();
 
         objeto = new Classe();
+        objeto.setPrimeiroNome(preferences.getString("primeiroNome", ""));
+        objeto.setMotivoCandidatura(preferences.getString("motivoCandidatura", ""));
 
-        objeto.setPrimeiroNome("");
-        objeto.setMotivoCandidatura("");
+        /*objeto.setPrimeiroNome("");
+        objeto.setMotivoCandidatura("");*/
 
         editNome = findViewById(R.id.editNome);
         editCandidatura = findViewById(R.id.editCandidatura);
 
+        editNome.setText(objeto.getPrimeiroNome());
+        editCandidatura.setText(objeto.getMotivoCandidatura());
+
         btnLimpar = findViewById(R.id.btnLimpar);
         btnEnviar = findViewById(R.id.btnEnviar);
 
-        editNome.setText(objeto.getPrimeiroNome());
-        editCandidatura.setText(objeto.getMotivoCandidatura());
+        /*editNome.setText(objeto.getPrimeiroNome());
+        editCandidatura.setText(objeto.getMotivoCandidatura());*/
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
