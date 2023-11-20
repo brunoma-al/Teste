@@ -2,6 +2,7 @@ package devandroid.bruno.teste.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,8 @@ import devandroid.bruno.teste.controller.Controller;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences preferences;
+    public static final String NOME_PREFERENCES = "Teste";
     Controller controller;
     Classe objeto;
     EditText editNome;
@@ -27,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
+        SharedPreferences.Editor teste = preferences.edit();
 
         objeto = new Classe();
 
@@ -57,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 objeto.setMotivoCandidatura(editCandidatura.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Enviado!"+objeto.toString(), Toast.LENGTH_SHORT).show();
+
+                teste.putString("primeiroNome",objeto.getPrimeiroNome());
+                teste.putString("motivoCandidatura",objeto.getMotivoCandidatura());
+                teste.apply();
+
                 controller.enviar(objeto);
             }
         });
