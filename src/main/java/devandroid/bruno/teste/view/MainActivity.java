@@ -17,6 +17,7 @@ import devandroid.bruno.teste.controller.Controller;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
+    SharedPreferences.Editor teste;
     public static final String NOME_PREFERENCES = "Teste";
     Controller controller;
     Classe objeto;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor teste = preferences.edit();
+        teste = preferences.edit();
 
         objeto = new Classe();
         objeto.setPrimeiroNome(preferences.getString("primeiroNome", ""));
@@ -58,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 editNome.setText("");
                 editCandidatura.setText("");
+
+                teste.clear();
+                teste.apply();
             }
         });
 
