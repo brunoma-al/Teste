@@ -2,6 +2,7 @@ package devandroid.bruno.teste.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,25 +29,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        objeto = new Classe();
+        controller = new Controller(MainActivity.this);
+        controller.toString();
 
-        objeto.setPrimeiroNome("");
-        objeto.setMotivoCandidatura("");
+        objeto = new Classe();
+        controller.buscar(objeto);
+
+        /*objeto.setPrimeiroNome("");
+        objeto.setMotivoCandidatura("");*/
 
         editNome = findViewById(R.id.editNome);
         editCandidatura = findViewById(R.id.editCandidatura);
 
+        editNome.setText(objeto.getPrimeiroNome());
+        editCandidatura.setText(objeto.getMotivoCandidatura());
+
         btnLimpar = findViewById(R.id.btnLimpar);
         btnEnviar = findViewById(R.id.btnEnviar);
 
-        editNome.setText(objeto.getPrimeiroNome());
-        editCandidatura.setText(objeto.getMotivoCandidatura());
+        /*editNome.setText(objeto.getPrimeiroNome());
+        editCandidatura.setText(objeto.getMotivoCandidatura());*/
 
         btnLimpar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 editNome.setText("");
                 editCandidatura.setText("");
+
+                controller.limpar();
             }
         });
 
@@ -57,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 objeto.setMotivoCandidatura(editCandidatura.getText().toString());
 
                 Toast.makeText(MainActivity.this, "Enviado!"+objeto.toString(), Toast.LENGTH_SHORT).show();
+
                 controller.enviar(objeto);
             }
         });
